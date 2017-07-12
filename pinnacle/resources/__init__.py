@@ -8,3 +8,15 @@ from pinnacle.resources.referencedataresources import (
 )
 
 from pinnacle.resources.accountresources import AccountDetails
+
+from pinnacle.resources.marketdataresources import (
+    FixtureDetails,
+    SettledFixtureDetails,
+    SpecialFixtureDetails,
+    SettledSpecialFixtureDetails,
+    OddsDetails,
+    SpecialOddsDetails,
+    LineDetails,
+    SpecialLineDetails,
+    InRunningDetails,
+)
