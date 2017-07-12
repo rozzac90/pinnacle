@@ -177,3 +177,15 @@ class MarketData(BaseEndpoint):
         return self.process_response(
             response.json(), resources.SpecialLineDetails, date_time_sent, datetime.datetime.utcnow()
         )
+
+    def get_teaser_groups(self):
+        raise NotImplementedError
+
+    def get_teaser_odds(self):
+        raise NotImplementedError
+
+    def get_teaser_lines(self):
+        raise NotImplementedError
+
+    def get_parlay_lines(self):
+        raise NotImplementedError
