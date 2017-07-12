@@ -6,3 +6,5 @@ from pinnacle.resources.referencedataresources import (
     PeriodDetails,
     LeagueDetails,
 )
+
+from pinnacle.resources.accountresources import AccountDetails
