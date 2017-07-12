@@ -20,3 +20,9 @@ from pinnacle.resources.marketdataresources import (
     SpecialLineDetails,
     InRunningDetails,
 )
+
+from pinnacle.resources.bettingresources import (
+    BetDetails,
+    PlaceBetDetails,
+    PlaceSpecialBetDetails,
+)
