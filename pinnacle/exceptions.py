@@ -26,3 +26,13 @@ class PasswordError(PinnacleError):
     def __init__(self):
         message = 'Password not found in environment variables, add or pass to APIClient'
         super(PasswordError, self).__init__(message)
+
+
+class StatusCodeError(PinnacleError):
+    """
+    Exception raised if status code is incorrect.
+    """
+
+    def __init__(self, status_code):
+        message = 'Status code error: %s' % status_code
+        super(StatusCodeError, self).__init__(message)

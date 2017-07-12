@@ -20,3 +20,22 @@ class CurrencyDetails(BaseResource):
             'name': 'name',
             'rate': 'rate',
         }
+
+
+class PeriodDetails(BaseResource):
+    class Meta(BaseResource.Meta):
+        attributes = {
+            'number': 'number',
+            'description': 'description',
+            'shortDescription': 'shortDescription',
+            'spreadDescription': 'spreadDescription',
+            'moneylineDescription': 'moneylineDescription',
+            'totalDescription': 'totalDescription',
+            'team1TotalDescription': 'team1TotalDescription',
+            'team2TotalDescription': 'team2TotalDescription',
+            'spreadShortDescription': 'spreadShortDescription',
+            'moneylineShortDescription': 'moneylineShortDescription',
+            'totalShortDescription': 'totalShortDescription',
+            'team1TotalShortDescription': 'team1TotalShortDescription',
+            'team2TotalShortDescription': 'team2TotalShortDescription',
+        }
