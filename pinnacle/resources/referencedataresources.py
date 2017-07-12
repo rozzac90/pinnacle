@@ -39,3 +39,17 @@ class PeriodDetails(BaseResource):
             'team1TotalShortDescription': 'team1TotalShortDescription',
             'team2TotalShortDescription': 'team2TotalShortDescription',
         }
+
+
+class LeagueDetails(BaseResource):
+    class Meta(BaseResource.Meta):
+        attributes = {
+            'id': 'id',
+            'name': 'name',
+            'homeTeamType': 'homeTeamType',
+            'hasOfferings': 'hasOfferings',
+            'allowRoundRobins': 'allowRoundRobins',
+            'leagueSpecialsCount': 'leagueSpecialsCount',
+            'eventSpecialsCount': 'eventSpecialsCount',
+            'eventCount': 'eventCount',
+        }

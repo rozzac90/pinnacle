@@ -4,4 +4,5 @@ from pinnacle.resources.referencedataresources import (
     SportsDetails,
     CurrencyDetails,
     PeriodDetails,
+    LeagueDetails,
 )
