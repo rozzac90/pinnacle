@@ -11,7 +11,6 @@ class APIClient(BaseClient):
         self.account = endpoints.Account(self)
         self.market_data = endpoints.MarketData(self)
         self.reference_data = endpoints.ReferenceData(self)
-        self.reporting = endpoints.Reporting(self)
 
     def __repr__(self):
         return '<APIClient [%s]>' % self.username
