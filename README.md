@@ -6,7 +6,7 @@ Python Wrapper for Pinnacle Sports API
 # Installation
 
 ```
-$ pip install matchbook
+$ pip install pinnacle
 ```
 
 # Usage
