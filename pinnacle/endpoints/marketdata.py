@@ -97,7 +97,7 @@ class MarketData(BaseEndpoint):
         )
 
     def get_odds(self, sport_id, league_ids=None, event_ids=None, since=None, is_live=None,
-                 odds_format=OddsFormat.Decimal, session=None):
+                 odds_format=OddsFormat.Decimal.value, session=None):
         """
         Get straight and parlay odds for all non-settled events.
         
@@ -118,7 +118,7 @@ class MarketData(BaseEndpoint):
         )
 
     def get_special_odds(self, sport_id, league_ids=None, special_id=None, since=None,
-                         odds_format=OddsFormat.Decimal, session=None):
+                         odds_format=OddsFormat.Decimal.value, session=None):
         """
         Get special odds for all non-settled events.
         
@@ -138,7 +138,7 @@ class MarketData(BaseEndpoint):
         )
 
     def get_line(self, sport_id, league_id, event_id, period_number, bet_type, team=None, side=None, handicap=None,
-                 odds_format=OddsFormat.Decimal, session=None):
+                 odds_format=OddsFormat.Decimal.value, session=None):
         """
         Get latest odds for a line.
         
@@ -161,7 +161,7 @@ class MarketData(BaseEndpoint):
             response.json(), resources.LineDetails, date_time_sent, datetime.datetime.utcnow()
         )
 
-    def get_special_lines(self, special_id, contestant_id, odds_format=OddsFormat.Decimal, session=None):
+    def get_special_lines(self, special_id, contestant_id, odds_format=OddsFormat.Decimal.value, session=None):
         """
         Get latest special line.
         
