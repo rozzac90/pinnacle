@@ -43,6 +43,3 @@ class ReferenceDataTest(unittest.TestCase):
 
         mock_request.assert_called_once_with("GET", method='v2/leagues', params={'sportId': 1}, session=None)
         assert mock_process_response.call_count == 1
-
-if __name__=='__main__':
-    unittest.main()

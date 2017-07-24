@@ -18,7 +18,8 @@ class MarketDataTest(unittest.TestCase):
         self.market_data.get_fixtures(sport_id=1, league_ids=[1, 2], since=10000)
 
         mock_request.assert_called_once_with(
-            "GET", method='v1/fixtures', params={'sportId': 1, 'leagueIds': [1, 2], 'since': 10000}, session=None)
+            "GET", method='v1/fixtures', params={'sportId': 1, 'leagueIds': [1, 2], 'since': 10000}, session=None
+        )
         assert mock_process_response.call_count == 1
 
     @mock.patch('pinnacle.endpoints.marketdata.MarketData.process_response')
@@ -121,9 +122,3 @@ class MarketDataTest(unittest.TestCase):
     def test_get_parlay_lines(self):
         with self.assertRaises(NotImplementedError):
             self.market_data.get_parlay_lines()
-
-
-
-
-if __name__=='__main__':
-    unittest.main()
