@@ -60,7 +60,7 @@ class MarketData(BaseEndpoint):
         """
         params = clean_locals(locals())
         date_time_sent = datetime.datetime.utcnow()
-        response = self.request("GET", method='v1/fixtures/settled', params=params, session=session)
+        response = self.request("GET", method='v1/fixtures/special', params=params, session=session)
         return self.process_response(
             response.json(), resources.SpecialFixtureDetails, date_time_sent, datetime.datetime.utcnow()
         )
