@@ -43,7 +43,7 @@ class Betting(BaseEndpoint):
         :param line_id: Line identification
         :param period_number: This represents the period of the match. 
         :param bet_type: type of bet to be placed, see pinnacle.enums.BetType
-        :param stake: Wagered amount in Client’s currency
+        :param stake: Wagered amount in Clients currency
         :param team: Chosen team type. This is needed only for SPREAD, MONEYLINE and TEAM_TOTAL_POINTS bet types
         :param side: Chosen side. This is needed only for TOTAL_POINTS and TEAM_TOTAL_POINTS bet type
         :param alt_line_id: Alternate line identification
@@ -75,8 +75,8 @@ class Betting(BaseEndpoint):
         :param line_id: Line identification
         :param special_id: Special identification.
         :param contestant_id: Contestant identification.
-        :param stake: Wagered amount in Client’s currency.
-        :param win_risk_stake: Whether the stake amount is risk or win amount.
+        :param stake: Wagered amount in Clients currency.
+        :param win_risk_stake: Whether the stake amount is risk or win amount
         :param odds_format: Bet is processed with this odds format.
         :param accept_better_line: Whether or not to accept a bet when there is a line change in favor of the client.
         :param session: requests session to be used.
