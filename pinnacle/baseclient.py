@@ -14,7 +14,7 @@ class BaseClient(object):
         """
         self.username = username
         self.password = password
-        self.url = 'https://api.pinnaclesports.com/'
+        self.url = 'https://api.pinnacle.com/'
         self.session = requests.Session()
         self.get_password()
 
