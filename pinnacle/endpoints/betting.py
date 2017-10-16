@@ -33,7 +33,7 @@ class Betting(BaseEndpoint):
         )
 
     def place_bet(self, sport_id, event_id, line_id, period_number, bet_type, stake, team=None, side=None,
-                  alt_line_id=None, win_risk_stake=WinRiskType.Risk.value, accept_better_line=Boolean.TRUE.value,
+                  alt_line_id=None, win_risk_stake=WinRiskType.Risk.value, accept_better_line=Boolean.TRUE.name,
                   odds_format=OddsFormat.Decimal.value, is_max_stake_bet=None, pitcher1_must_start=None,
                   pitcher2_must_start=None, customer_reference=None, session=None):
         """
@@ -69,7 +69,7 @@ class Betting(BaseEndpoint):
         )
 
     def place_special_bet(self, line_id, special_id, contestant_id, stake, win_risk_stake=WinRiskType.Risk.value,
-                          odds_format=OddsFormat.Decimal.value, accept_better_line=Boolean.TRUE.value, session=None):
+                          odds_format=OddsFormat.Decimal.value, accept_better_line=Boolean.TRUE.name, session=None):
         """
         Place special bet in the system.
         
