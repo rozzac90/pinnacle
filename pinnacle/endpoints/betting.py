@@ -3,14 +3,14 @@ import uuid
 import datetime
 
 from pinnacle import resources
-from pinnacle.enums import OddsFormat, Boolean, WinRiskType
+from pinnacle.enums import OddsFormat, Boolean, WinRiskType, FillType
 from pinnacle.endpoints.baseendpoint import BaseEndpoint
 from pinnacle.utils import clean_locals
 
 
 class Betting(BaseEndpoint):
 
-    def get_bets(self, betids=None, betlist=None, from_date=None, to_date=None, session=None):
+    def get_bets(self, betids=None, betlist=None, unique_request_ids=None, from_date=None, to_date=None, session=None):
         """
         Get running bets or bets settled within the last 30 days.
         
@@ -20,6 +20,8 @@ class Betting(BaseEndpoint):
                         Required when betlist parameter is supplied.
         :param betlist: type of bets to filter for, see pinnacle.enums.BetListType.
         :param betids: list of bet IDs, max 100, works for non settled bets and bets settled in the last 30 days.
+        :param unique_request_ids: list of uniqueRequestIds to query bets placed within the last 30 mins and straight bets only. 
+                                   If specified, is treated with highest priority, all other parameters are ignored. Maximum is 10 ids.
         :param session: requests session to be used.
         :returns: All bets fitting the filtered arguments supplied. 
         """
@@ -27,14 +29,14 @@ class Betting(BaseEndpoint):
         to_date = to_date.isoformat() if to_date else to_date
         params = clean_locals(locals())
         date_time_sent = datetime.datetime.utcnow()
-        response = self.request("GET", method='v1/bets', params=params, session=session)
+        response = self.request("GET", method='v2/bets', params=params, session=session)
         return self.process_response(
             response.json(), resources.BetDetails, date_time_sent, datetime.datetime.utcnow()
         )
 
     def place_bet(self, sport_id, event_id, line_id, period_number, bet_type, stake, team=None, side=None,
                   alt_line_id=None, win_risk_stake=WinRiskType.Risk.value, accept_better_line=Boolean.TRUE.name,
-                  odds_format=OddsFormat.Decimal.value, is_max_stake_bet=None, pitcher1_must_start=None,
+                  odds_format=OddsFormat.Decimal.value, fill_type=FillType.Normal, pitcher1_must_start=None,
                   pitcher2_must_start=None, customer_reference=None, session=None):
         """
         Place bet in the system.
@@ -51,7 +53,7 @@ class Betting(BaseEndpoint):
         :param win_risk_stake: Whether the stake amount is risk or win amount
         :param accept_better_line: Whether or not to accept a bet when there is a line change in favor of the client.
         :param odds_format: Bet is processed with this odds format.
-        :param is_max_stake_bet: If set to TRUE bet wil be placed on the maximum possible stake irrespective of stake.
+        :param fill_type: FillAndKill, if stake > maxbet will fill max bet. FillMaxLimit, ignore stake and stake to max bet.
         :param pitcher1_must_start: Baseball only. Refers to the pitcher for TEAM_TYPE. Team1. 
                                     Only for MONEYLINE bet type, for all other bet types this has to be TRUE.
         :param pitcher2_must_start: Baseball only. Refers to the pitcher for TEAM_TYPE. Team2. 
@@ -63,7 +65,7 @@ class Betting(BaseEndpoint):
         unique_request_id = str(uuid.uuid4())
         params = clean_locals(locals())
         date_time_sent = datetime.datetime.utcnow()
-        response = self.request("POST", method='v1/bets/place', data=params, session=session)
+        response = self.request("POST", method='/v2/bets/straight', data=params, session=session)
         return self.process_response(
             response.json(), resources.PlaceBetDetails, date_time_sent, datetime.datetime.utcnow()
         )
