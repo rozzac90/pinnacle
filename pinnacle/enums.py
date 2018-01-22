@@ -48,3 +48,10 @@ class OddsFormat(Enum):
 class WinRiskType(Enum):
     Win = 'WIN'
     Risk = 'RISK'
+
+
+class FillType(Enum):
+    Normal = 'Normal'
+    FillAndKill = 'FILLANDKILL'
+    FillMaxLimit = 'FILLMAXLIMIT'
+
