@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import uuid
 import datetime
+import pandas as pd
 
 from pinnacle import resources
 from pinnacle.enums import OddsFormat, Boolean, WinRiskType
@@ -23,8 +24,8 @@ class Betting(BaseEndpoint):
         :param session: requests session to be used.
         :returns: All bets fitting the filtered arguments supplied. 
         """
-        from_date = from_date.isoformat() if from_date else from_date
-        to_date = to_date.isoformat() if to_date else to_date
+        from_date = pd.to_datetime(from_date).isoformat() if from_date is not None else from_date
+        to_date = pd.to_datetime(to_date).isoformat() if to_date is not None else to_date
         params = clean_locals(locals())
         date_time_sent = datetime.datetime.utcnow()
         response = self.request("GET", method='v1/bets', params=params, session=session)
