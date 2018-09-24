@@ -10,7 +10,8 @@ from pinnacle.utils import clean_locals
 
 class Betting(BaseEndpoint):
 
-    def get_bets(self, betids=None, betlist=None, unique_request_ids=None, from_date=None, to_date=None, session=None):
+    def get_bets(self, betids=None, betlist=None, unique_request_ids=None, from_date=None, to_date=None,
+				 bet_statuses=None, sort_dir=None, page_size=None, from_record=None, session=None):
         """
         Get running bets or bets settled within the last 30 days.
         
@@ -22,6 +23,13 @@ class Betting(BaseEndpoint):
         :param betids: list of bet IDs, max 100, works for non settled bets and bets settled in the last 30 days.
         :param unique_request_ids: list of uniqueRequestIds to query bets placed within the last 30 mins and straight bets only. 
                                    If specified, is treated with highest priority, all other parameters are ignored. Maximum is 10 ids.
+        :param bet_statuses: Type of bet statuse to filter for, see pinnacle.enums.BetStatusesType. 
+							 This works only in conjustion with betlist, as additional filter. 
+        :param sort_dir: Type of bet statuse to filter for, see pinnacle.enum.SortDirType. 
+						 This works only in conjustion with betlist, as additional filter.
+        :param page_size: Page size in case. Max is 1000. Respected only when querying by date range.
+        :param from_record: Starting record (inclusive) of the result. Respected only when querying by date range. 
+							To fetch next page set it to toRecord+1
         :param session: requests session to be used.
         :returns: All bets fitting the filtered arguments supplied. 
         """
@@ -29,7 +37,7 @@ class Betting(BaseEndpoint):
         to_date = to_date.strftime('%Y-%m-%d') if to_date is not None else to_date
         params = clean_locals(locals())
         date_time_sent = datetime.datetime.utcnow()
-        response = self.request("GET", method='v2/bets', params=params, session=session)
+        response = self.request("GET", method='v3/bets', params=params, session=session)
         return self.process_response(
             response.json(), resources.BetDetails, date_time_sent, datetime.datetime.utcnow()
         )
