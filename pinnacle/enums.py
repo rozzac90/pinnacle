@@ -55,3 +55,17 @@ class FillType(Enum):
     FillAndKill = 'FILLANDKILL'
     FillMaxLimit = 'FILLMAXLIMIT'
 
+
+class BetStatusesType(Enum):
+    Won = 'WON'
+    Lose = 'LOSE'
+    Cancelled = 'CANCELLED'
+    Refunded = 'REFUNDED'
+    NotAccepted = 'NOT_ACCEPTED'
+    Accepted = 'ACCEPTED'
+    PendingAcceptance = 'PENDING_ACCEPTANCE'
+
+
+class SortDirType(Enum):
+    Asc = 'ASC'
+    Desc = 'DESC'
