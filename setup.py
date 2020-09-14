@@ -1,10 +1,8 @@
 
 from setuptools import setup, find_packages
-from pinnacle import __version__
 
 setup(
     name="pinnacle",
-    version=__version__,
     author="Rory Cole",
     author_email="rory.cole1990@gmail.com",
     description="Pinnacle API Python wrapper",
