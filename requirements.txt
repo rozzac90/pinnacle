@@ -1,4 +1,4 @@
-requests==2.13.0
-python-dateutil==2.6.0
-pytz==2017.2
-enum34==1.1.6
+requests
+python-dateutil
+pytz
+enum34
