@@ -1,3 +1,11 @@
+## About this fork
+
+Original repo seems dead, no commits and merges for years.
+Cleaned up requirements, fixed tests and bumped docker python image version to nice and fast 3.11
+
+
+## Original repo README
+
 # pinnacle
 Python Wrapper for Pinnacle Sports API
 
