@@ -13,7 +13,7 @@ class BaseClientTest(unittest.TestCase):
         client = BaseClient(username='username', password='password')
         assert client.username == 'username'
         assert client.password == 'password'
-        assert client.url == 'https://api.pinnaclesports.com/'
+        assert client.url == 'https://api.pinnacle.com/'
         assert isinstance(client.session, requests.Session)
         assert client.headers == {'Content-Type': 'application/json', 'Accept': 'application/json'}
         assert isinstance(client.auth, HTTPBasicAuth)
